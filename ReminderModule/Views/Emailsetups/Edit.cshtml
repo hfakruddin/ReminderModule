@@ -1,0 +1,96 @@
+﻿@model ReminderModule.Data.Models.Emailsetup
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Emailsetup</h4>
+<hr />
+@{
+    if (ViewBag.savestatus == "OK")
+    {
+        <p class="bg-success"><b>Email set up updated successfully!</b></p>        
+    }
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="EmailHost" class="control-label"></label>
+                <input asp-for="EmailHost" class="form-control" />
+                <span asp-validation-for="EmailHost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Port" class="control-label"></label>
+                <input asp-for="Port" class="form-control" />
+                <span asp-validation-for="Port" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="EnableSSL" /> @Html.DisplayNameFor(model => model.EnableSSL)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="HUName"  class="control-label"></label>
+                <input asp-for="HUName" class="form-control" />
+                <span asp-validation-for="HUName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HUPassword" class="control-label"></label><br />
+                 @* <input  asp-for="HUPassword" class="form-control" /> *@
+                 <input type="password" id="HUPassword" value="@Model.HUPassword" name="HUPassword" />
+                <span asp-validation-for="HUPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Interval" class="control-label"></label>
+                <input asp-for="Interval" class="form-control" />
+                <span asp-validation-for="Interval" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmailFrom" class="control-label"></label>
+                <input asp-for="EmailFrom" class="form-control" />
+                <span asp-validation-for="EmailFrom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmailTo" class="control-label"></label>
+                <input asp-for="EmailTo" class="form-control" />
+                <span asp-validation-for="EmailTo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Subject" class="control-label"></label>
+                <input asp-for="Subject" class="form-control" />
+                <span asp-validation-for="Subject" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Body" class="control-label"></label>
+                <textarea asp-for="Body" class="form-control" rows="10" ></textarea>
+                <span asp-validation-for="Body" class="text-danger"></span>
+            </div>
+            @* <div class="form-group">
+                <label asp-for="LogFilePath" class="control-label"></label>
+                <input asp-for="LogFilePath" disabled class="form-control" />
+                <span asp-validation-for="LogFilePath" class="text-danger"></span>
+            </div> *@
+            <div class="form-group">
+                <label asp-for="SenderName" class="control-label"></label>
+                <input asp-for="SenderName" class="form-control" />
+                <span asp-validation-for="SenderName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@* <div>
+    <a asp-action="Index">Back to List</a>
+</div> *@
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
